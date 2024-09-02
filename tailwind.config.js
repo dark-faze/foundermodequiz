@@ -25,6 +25,9 @@ export default {
           700: '#7E22CE',
         },
       },
+      screens: {
+        'xs': '375px',
+      },
     },
   },
   plugins: [],
