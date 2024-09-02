@@ -134,38 +134,49 @@ function App() {
   };
 
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center bg-black p-4 font-sans">
-      <h1 className="text-5xl font-bold mb-8 text-white text-center">🚀 Founder Mode vs Manager Mode Quiz 🧑‍💼</h1>
-      <div className="backdrop-blur-lg bg-gray-900 bg-opacity-70 rounded-xl p-8 shadow-lg w-full max-w-4xl">
-        {showResult ? (
-          <div className="result space-y-6 text-center">
-            <h2 className="text-3xl font-bold text-white">🎉 Quiz Completed! 🎉</h2>
-            <p className="text-2xl font-bold text-white">Your score: {score} out of {questions.length}</p>
-            <p className="text-2xl font-bold text-white">
-              You are in: {score > questions.length / 2 ? "🚀 Founder Mode" : "🧑‍💼 Manager Mode"}
-            </p>
-            <button onClick={resetQuiz} className="bg-white text-black font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition duration-300 text-xl">
-              🔄 Retake Quiz
-            </button>
-          </div>
-        ) : (
-          <div className="question-container space-y-6 text-center">
-            <h2 className="text-2xl font-bold text-white">Question {currentQuestion + 1} of {questions.length}</h2>
-            <p className="text-xl font-bold text-white">{questions[currentQuestion].text}</p>
-            <div className="options space-y-4">
-              {questions[currentQuestion].options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAnswer(index === 1 ? questions[currentQuestion].founderScore : 0)}
-                  className="w-full bg-gray-800 text-white py-4 px-6 rounded-lg hover:bg-gray-700 transition duration-300 text-lg font-bold"
-                >
-                  {index === 0 ? '🧑‍💼 ' : '🚀 '}{option}
-                </button>
-              ))}
+    <div className="min-h-screen w-full flex flex-col bg-black font-sans">
+      <header className="py-6 bg-gray-900 border-b border-purple-500">
+        <h1 className="text-5xl font-bold text-purple-400 text-center drop-shadow-lg">🚀 Founder Mode vs Manager Mode Quiz 🧑‍💼</h1>
+      </header>
+
+      <main className="flex-grow flex items-center justify-center p-8 bg-gradient-to-br from-gray-900 to-black">
+        <div className="backdrop-blur-xl bg-gray-800 bg-opacity-50 rounded-3xl p-8 shadow-2xl w-full max-w-4xl border border-purple-500 border-opacity-50">
+          {showResult ? (
+            <div className="result space-y-8 text-center">
+              <h2 className="text-4xl font-bold text-purple-400 drop-shadow-lg">🎉 Quiz Completed! 🎉</h2>
+              <p className="text-3xl font-bold text-white drop-shadow-md">Your score: {score} out of {questions.length}</p>
+              <p className="text-3xl font-bold text-purple-300 drop-shadow-md">
+                You are in: {score > questions.length / 2 ? "🚀 Founder Mode" : "🧑‍💼 Manager Mode"}
+              </p>
+              <button onClick={resetQuiz} className="bg-purple-600 text-white font-bold py-4 px-8 rounded-full hover:bg-purple-700 transition duration-300 text-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                🔄 Retake Quiz
+              </button>
             </div>
-          </div>
-        )}
-      </div>
+          ) : (
+            <div className="question-container space-y-8 text-center">
+              <h2 className="text-3xl font-bold text-purple-400 drop-shadow-md">Question {currentQuestion + 1} of {questions.length}</h2>
+              <p className="text-2xl font-bold text-white drop-shadow-sm">{questions[currentQuestion].text}</p>
+              <div className="options space-y-4">
+                {questions[currentQuestion].options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswer(index === 1 ? questions[currentQuestion].founderScore : 0)}
+                    className="w-full bg-gray-700 text-white py-4 px-6 rounded-xl hover:bg-purple-600 transition duration-300 text-xl font-bold shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                  >
+                    {index === 0 ? '🧑‍💼 ' : '🚀 '}{option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+
+      <footer className="py-4 bg-gray-900 border-t border-purple-500 text-center">
+        <a href="https://x.com/akhlas_hussain" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 transition duration-300 font-semibold">
+          Follow me on X @akhlas_hussain
+        </a>
+      </footer>
     </div>
   )
 }
